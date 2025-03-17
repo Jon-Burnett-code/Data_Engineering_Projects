@@ -39,6 +39,9 @@ CREATE TABLE bronze.crm_prd_info (
 );
 GO
 
+/*This table caused me pain, kept getting error when trying to insert data into this table. 
+I couldn't figure out what was wrong, turns out I missed entering a coulmn which messed up the bulk insert */
+	
 IF OBJECT_ID ('bronze.crm_sales_details' , 'U') IS NOT NULL
 	DROP TABLE bronze.crm_sales_details;
 GO
@@ -51,6 +54,7 @@ CREATE TABLE bronze.crm_sales_details (
 	sls_ship_date INT,
 	sls_due_date INT,
 	sls_sales INT,
+	sls_quantity INT,
 	sls_price INT
 );
 GO
