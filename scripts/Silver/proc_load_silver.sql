@@ -4,20 +4,20 @@ INSERT INTO silver.crm_cust_info (
 	cst_key,
 	cst_firstname,
 	cst_lastname,
-	cst_material_status,
+	cst_marital_status,
 	cst_gndr,
-	cst_create_date
+	cst_create_date 
 )
 SELECT
 cst_id,
 cst_key,
 TRIM(cst_firstname) AS cst_firstname,
 TRIM(cst_lastname) AS cst_lastname,
-CASE UPPER(TRIM(cst_material_status))
+CASE UPPER(TRIM(cst_marital_status))
 	 WHEN 'M' THEN 'Married'
 	 WHEN 'S' THEN 'Single'
 	 ELSE 'n/a'
-END AS material_status,
+END AS marital_status,
 CASE UPPER(TRIM(cst_gndr))
 	 WHEN 'M' THEN 'Male'
 	 WHEN 'F' THEN 'Female'
