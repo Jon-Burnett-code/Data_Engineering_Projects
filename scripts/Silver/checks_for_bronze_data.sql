@@ -2,11 +2,14 @@
 
 
 */ 
---===============================================
---Performing Checks for all of the bronze data
---===============================================
+--==================================================
+-->>Performing Checks for all of the bronze data
+--==================================================
 
+--==================================================
 -->> Performing Checks for bronze.crm_cust_info
+--==================================================
+
 -- Check For Nulls or Dublicates in Primary Key
 -- Expectation: No results
 SELECT 
@@ -33,7 +36,9 @@ FROM bronze.crm_cust_info;
 SELECT DISTINCT cst_material_status
 FROM bronze.crm_cust_info;
 
+--==================================================
 -->> Perfroming Checks for bronze.crm_prd_info
+--==================================================
 
 --Check for Nulls or Duplicates in Primary Key
 --Expectations: No Results 
@@ -64,3 +69,21 @@ FROM bronze.crm_prd_info;
 SELECT *
 FROM bronze.crm_prd_info
 WHERE prd_end_dt < prd_start_dt
+
+--==================================================
+-->> Performing Checks for bronze.crm_sales_details
+--==================================================
+
+--Checking for Unwanted Spaces
+--Expectation: No results
+SELECT * FROM bronze.crm_sales_details
+WHERE sls_ord_num != TRIM(sls_ord_num);
+
+--Checking everything working between sls_prd_key >> pr_key
+--Expectation: No results
+SELECT * FROM bronze.crm_sales_details
+WHERE sls_prd_key NOT IN (SELECT prd_key FROM silver.crm_prd_info);
+--Checking everything working between sls_cust_id >> cust_id
+--Expectation: No results
+SELECT * FROM bronze.crm_sales_details
+WHERE sls_cust_id NOT IN (SELECT cst_id FROM silver.crm_cust_info);
