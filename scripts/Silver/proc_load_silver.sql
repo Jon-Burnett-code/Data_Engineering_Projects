@@ -16,6 +16,20 @@ Usage Example:
 	EXEC silver.load_silver;
 
 =============================================================================================
+Types of Transformations and cleansing completed for each table
+=============================================================================================
+Table 1 (bronze.crm_cust_info -> silver.crm_cust_info):
+
+Table 2 (bronze.crm_prd_info -> silver.crm_prd_info):
+
+Table 3 (bronze.crm_sales_details -> silver.crm_sales_details):
+
+Table 4 (bronze.erp_cust_az12 -> silver.erp_cust_az12):
+
+Table 5 (bronze.erp_loc_a101 -> silver.erp_loc_a101):
+
+Table 6 (bronze.erp_px_cat_g1v2 -> silver.erp_px_cat_g1v2):
+
 */
 
 CREATE OR ALTER PROCEDURE silver.load_silver AS 
