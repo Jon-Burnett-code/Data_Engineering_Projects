@@ -3,7 +3,7 @@
 ## Project 1: SQL Data Warehouse Project
 Welcome to my Data Warehouse Project, this project demonstates a comprehensive data warehousing and analytics solution, from building a data warehouse to generating actionable insights.
 
-## Project Requirements
+### Project Requirements
 
 ### Building the Data Warehouse (Data Engineering)
 
