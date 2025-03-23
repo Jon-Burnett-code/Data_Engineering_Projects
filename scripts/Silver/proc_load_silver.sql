@@ -14,24 +14,8 @@ Parameters:
 
 Usage Example:
 	EXEC silver.load_silver;
-
 =============================================================================================
-Types of Transformations and cleansing completed for each table
-=============================================================================================
-Table 1 (bronze.crm_cust_info -> silver.crm_cust_info):
-
-Table 2 (bronze.crm_prd_info -> silver.crm_prd_info):
-
-Table 3 (bronze.crm_sales_details -> silver.crm_sales_details):
-
-Table 4 (bronze.erp_cust_az12 -> silver.erp_cust_az12):
-
-Table 5 (bronze.erp_loc_a101 -> silver.erp_loc_a101):
-
-Table 6 (bronze.erp_px_cat_g1v2 -> silver.erp_px_cat_g1v2):
-
 */
-
 CREATE OR ALTER PROCEDURE silver.load_silver AS 
 BEGIN 
 	DECLARE @start_time DATETIME, @end_time DATETIME, @batch_start_time DATETIME, @batch_end_time DATETIME;
@@ -263,4 +247,34 @@ BEGIN
 		PRINT '====================================================='
 	END CATCH
 END
+/*
+=============================================================================================
+Types of Transformations and cleansing completed for each table
+=============================================================================================
+Table 1 (bronze.crm_cust_info -> silver.crm_cust_info):
+	-Removal of Unwanted Spaces (Row: 51-52)
+		Ensures data consitency and uniformity in all records. 
+			e.g. TRIM(cst_firstname) 
+	-Data Normalization/Standardization (Row: 53-62)
+		Maps coded values to meaningful, user-friednly descriptions. 
+			e.g. CASE UPPER(TRIM(cst_marital_status)) WHEN 'M' THEN 'Married' ... ect. 
+	-Handling Missing Data (Row: 57 and 62)
+		Fills in blanks by adding a default value. 
+			e.g. ...ELSE 'n/a' 
+	-Remove Duplicates (Row: 63-70)
+		Ensures only 
+			e.g.  SELECT *, ROW_NUMBER() OVER (PARTITION BY cst_id ORDER BY cst_create_date DESC) AS flag_last ... ect. 
+			
 
+
+Table 2 (bronze.crm_prd_info -> silver.crm_prd_info):
+
+Table 3 (bronze.crm_sales_details -> silver.crm_sales_details):
+
+Table 4 (bronze.erp_cust_az12 -> silver.erp_cust_az12):
+
+Table 5 (bronze.erp_loc_a101 -> silver.erp_loc_a101):
+
+Table 6 (bronze.erp_px_cat_g1v2 -> silver.erp_px_cat_g1v2):
+
+*/
