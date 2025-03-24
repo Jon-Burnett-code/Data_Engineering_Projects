@@ -40,6 +40,7 @@ tables and **fact** tables for specific buiness metrics.
 ### 3. gold.fact_sales
  * **Purpose**: Stores transactional sales data for analytical purposes.
  * **Columns**:
+   
 | Column Name | Data Type | Description |
 | --- | --- | --- |
 | order_number | NVARCHAR(50) | A unique alphanumeric identifier for each sales order (e.g. 'SO54496'). |
