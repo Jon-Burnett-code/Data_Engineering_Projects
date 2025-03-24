@@ -33,8 +33,8 @@ tables and **fact** tables for specific buiness metrics.
 | category | NVARCHAR(50) | The broader classification of the product (e.g. Bikes, Components) to group related items. |
 | subcategory | NVARCHAR(50) | A more detailed classification of the product within the category, such as product type. |
 | maintenance | NVARCHAR(50) | Indicates whether the product requires maintenance (e.g. 'Yes', 'No'). |
-| cost | NVARCHAR(50) | The cost or base price of the product, measured in monetary units. |
-| product_line | DATE | The specific product line or series to which the product belongs (e.g. Road, Mountain). |
+| cost | INT | The cost or base price of the product, measured in monetary units. |
+| product_line | NVARCHAR(50) | The specific product line or series to which the product belongs (e.g. Road, Mountain). |
 | start_date | DATE | The date when the product became available for sale or use, stored in. |
 
 ### 3. gold.fact_sales
