@@ -6,7 +6,7 @@ Welcome to my Data Warehouse Project, this project demonstates a comprehensive d
 ### Building the Data Warehouse (Data Engineering)
 
 #### Objective 
-Develop a modern Data Warehouse using SQL server to consolidate sales data, enabling analyitcal reporting and informed decision making.
+To develop a modern Data Warehouse using SQL server to consolidate sales data, enabling analyitcal reporting and informed decision making.
 
 #### Specifications
  - **Data Sources**: Import data from two sources (ERP & CRV) provided as CSV files.
@@ -15,12 +15,9 @@ Develop a modern Data Warehouse using SQL server to consolidate sales data, enab
  - **Scope**: Focus on the latest data sets only; historization of data is not required.
  - **Documentation**: Provide clear documentation of the data model to support both business stakeholders and analytics teams.
 
-### BI: Analytics & Reporting (Data Analytics)
-
-#### Objective
-Develop SQL-based analytics to deliver insights into:
- - **Customer Behaviour**
- - **Product Performance**
- - **Sales Trends**
-
-These insights empower stakeholders with key business metrics, enabling strategic decision-making. 
+### Brief Explanation of Folders
+ * **DataSets**: Contains the datasets that are being used within this project.
+ * **Docs**:
+ * **Scripts**:
+ * **Tests**:
+ 
