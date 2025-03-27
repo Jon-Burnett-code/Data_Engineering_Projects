@@ -17,7 +17,7 @@ To develop a modern Data Warehouse using SQL server to consolidate sales data, e
 
 ### Brief Explanation of Folders
  * **DataSets**: Contains the datasets that are being used within this project.
- * **Docs**:
+ * **Docs**: Contains Data catalog and diagrams relating to project.
  * **Scripts**: Contains the Scripts(Code) required to build the full Data Warehouse.
  * **Tests**: Contains a variety of test for the Scripts.
  
