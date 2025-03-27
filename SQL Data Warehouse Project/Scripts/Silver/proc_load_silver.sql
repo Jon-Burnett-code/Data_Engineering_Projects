@@ -262,19 +262,50 @@ Table 1 (bronze.crm_cust_info -> silver.crm_cust_info):
 		Fills in blanks by adding a default value. 
 			e.g. ...ELSE 'n/a' 
 	-Remove Duplicates (Row: 63-70)
-		Ensures only 
+		Ensures only one record per entity by identifying and retaining the most relevant row.
 			e.g.  SELECT *, ROW_NUMBER() OVER (PARTITION BY cst_id ORDER BY cst_create_date DESC) AS flag_last ... ect. 
 			
-
-
 Table 2 (bronze.crm_prd_info -> silver.crm_prd_info):
+	- Derived Columns (Row: 93-94)
+		Create new columns based on calculations or transformations of existing ones.
+			e.g. REPLACE(SUBSTRING(prd_key, 1,5),'-', '_')AS cat_id,
+	- Handling missing information (Row: 96)
+		Changing a null to a value such as n/a
+			e.g. ISNULL(prd_cost, 0) AS prd_cost,
+	- Data Normalization (Row: 97-103)
+		Instead of having a code value, changed it to a friendly value 
+			CASE UPPER(TRIM(prd_line)) WHEN 'M' THEN 'Mountain' ... ect.
+	- Handled Missing Data (Row: 102)
+		Fills in blanks by adding a default value. 
+			e.g. ...ELSE 'n/a' 
+	- Data type casting (Row: 104)
+		Converting the type from one type to another 
+			e.g. CAST(prd_start_dt AS DATE) AS prd_start_dt,
+	- Data type casting + Data enrichment (Row: 105-108)
+		Converting the type from one type to another + add new, relevant data to enhance the dataset for analysis
+			e.g. CAST(LEAD(prd_start_dt) OVER (PARTITION BY prd_key ORDER BY prd_start_dt)-1 AS DATE ... ect.
 
 Table 3 (bronze.crm_sales_details -> silver.crm_sales_details):
+	- Handling invalid data + data type casting (Row: 136 - 144)
+		e.g. CASE WHEN sls_order_dt = 0 OR LEN(sls_order_dt) != 8 THEN NULL ...ect.
+	- Handling missing + invalid data by deriving the column from an already exisiting one (Row: 145 - 153)
+		e.g. CASE WHEN sls_sales IS NULL OR sls_sales <= 0 OR sls_sales != sls_quantity * ABS(sls_price) ... ect.
 
 Table 4 (bronze.erp_cust_az12 -> silver.erp_cust_az12):
+	- Handled invalid values (Row: 175 - 177)
+		e.g. CASE WHEN cid LIKE 'NAS%' THEN SUBSTRING(cid, 4, LEN(cid)) ELSE cid END AS cid,
+	- Handled invalid values cont. ( Row: 178 - 180)
+		e.g. CASE WHEN bdate > GETDATE() THEN NULL ELSE bdate END AS bdate, 
+	- Data Normalizations + handled missing values (Row: 181 - 184)
+		Mapped coded values to more friendly values 
+			e.g. CASE WHEN UPPER(TRIM(gen)) IN ('M', 'Male') ...ect.
 
 Table 5 (bronze.erp_loc_a101 -> silver.erp_loc_a101):
+	- Handled invalid values (Row: 202)
+		e.g. REPLACE(cid, '-', '') cid,
+	- Data Normalization + Remove unwanted spaces (Row: 203-207)
+		e.g. CASE WHEN TRIM(cntry) = 'DE' THEN 'Germany' ... ect.
 
 Table 6 (bronze.erp_px_cat_g1v2 -> silver.erp_px_cat_g1v2):
-
+	- NO TRANSFORMATIONS NEEDED
 */
