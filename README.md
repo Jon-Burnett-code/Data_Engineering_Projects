@@ -2,7 +2,8 @@
 
 ## Project 1: SQL Data Warehouse Project (Part 1) (Finalizing) 
 ### Brief Summary
-Creating a Data Warehouse using the medallion architecture, using SQL.
+Creating a Data Warehouse using the medallion architecture, in SQL.
+
 **Overview of tasks**:
   * Creating Bronze, Silver and Gold Schemas.
   * Taking the raw CSV file datasets, extracting them and then loading into bronze schema.
