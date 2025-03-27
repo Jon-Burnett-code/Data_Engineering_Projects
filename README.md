@@ -10,7 +10,7 @@ Creating a Data Warehouse using the medallion architecture, in SQL.
   * Extracting raw data from bronze schema, cleansing & transforming data then loading to silver schema.
   * Creating views for the gold layer,
 
-## Project 2: SQL Data Warehouse Project (Part 2) (To be completed)
+## Project 1: SQL Data Warehouse Project (Part 2) (To be completed)
 ### Brief Summary
 
 
