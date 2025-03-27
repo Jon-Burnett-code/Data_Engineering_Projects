@@ -1,6 +1,6 @@
 # Data Engineering Projects
 
-## Project 1: SQL Data Warehouse Project (Part 1) (Finalizing) 
+## Project 1: SQL Data Warehouse Project (Part 1) (Completed) 
 ### Brief Summary
 Creating a Data Warehouse using the medallion architecture, in SQL.
 
